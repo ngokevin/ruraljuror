@@ -6,6 +6,7 @@ var reactify = require('reactify');
 var stylus = require('gulp-stylus');
 var vinylSource = require('vinyl-source-stream');
 var watchify = require('watchify');
+var webserver = require('gulp-webserver');
 
 
 var bundler = watchify(browserify('./js/app.js', watchify.args));
@@ -33,6 +34,13 @@ gulp.task('js', function() {
 });
 
 
+gulp.task('serve', function() {
+    return gulp.src(['./'])
+        .pipe(webserver({
+            port: '12345'
+        }));
+});
+
 gulp.task('watch', function() {
     bundler.on('update', jsBundle);
     bundler.on('log', console.log);
@@ -42,4 +50,4 @@ gulp.task('watch', function() {
 
 
 gulp.task('build', ['css', 'js']);
-gulp.task('default', ['js', 'watch']);
+gulp.task('default', ['js', 'serve', 'watch']);

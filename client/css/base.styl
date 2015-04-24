@@ -1,4 +1,47 @@
-html {
+$dark-gray = #111;
+$medium-gray = #555;
+$light-gray = #EEE;
+
+html,
+body {
+    background: $light-gray;
     height: 100%;
+    margin: 0;
+    padding: 0;
     width: 100%;
+}
+
+li {
+    list-style: none;
+}
+
+main {
+    align-items: center;
+    display: flex;
+    height: 100%;
+    justify-content: center;
+    width: 100%;
+}
+
+.set {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    padding: 0;
+    width: 100%;
+}
+
+.set--title {
+    color: $dark-gray;
+    text-align: center;
+    width: 100%;
+}
+
+.item {
+    margin: 30px;
+}
+
+[data-item--selected="true"] {
+    box-shadow: 0 0 1px $medium-gray;
+    opacity: .75;
 }
